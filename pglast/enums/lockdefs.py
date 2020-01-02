@@ -4,13 +4,10 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017-2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
-try:
-    from enum import Enum, IntEnum, IntFlag, auto
-except ImportError: #pragma: no cover
-    # Python < 3.6
-    from aenum import Enum, IntEnum, IntFlag, auto
-
+from enum import Enum, IntEnum
 
 
 # #define-ed constants
