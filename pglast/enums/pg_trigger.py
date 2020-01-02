@@ -5,12 +5,9 @@
 # :Copyright: © 2017-2019 Lele Gaifax
 #
 
-try:
-    from enum import Enum, IntEnum, IntFlag, auto
-except ImportError: #pragma: no cover
-    # Python < 3.6
-    from aenum import Enum, IntEnum, IntFlag, auto
-
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
+from enum import IntEnum
 
 
 # #define-ed constants

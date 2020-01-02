@@ -5,149 +5,146 @@
 # :Copyright: © 2017-2019 Lele Gaifax
 #
 
-try:
-    from enum import Enum, IntEnum, IntFlag, auto
-except ImportError: #pragma: no cover
-    # Python < 3.6
-    from aenum import Enum, IntEnum, IntFlag, auto
+from __future__ import absolute_import, division, print_function, unicode_literals
+from enum import IntEnum, Enum
 
 
 class A_Expr_Kind(IntEnum):
     AEXPR_OP = 0
-    AEXPR_OP_ANY = auto()
-    AEXPR_OP_ALL = auto()
-    AEXPR_DISTINCT = auto()
-    AEXPR_NOT_DISTINCT = auto()
-    AEXPR_NULLIF = auto()
-    AEXPR_OF = auto()
-    AEXPR_IN = auto()
-    AEXPR_LIKE = auto()
-    AEXPR_ILIKE = auto()
-    AEXPR_SIMILAR = auto()
-    AEXPR_BETWEEN = auto()
-    AEXPR_NOT_BETWEEN = auto()
-    AEXPR_BETWEEN_SYM = auto()
-    AEXPR_NOT_BETWEEN_SYM = auto()
-    AEXPR_PAREN = auto()
+    AEXPR_OP_ANY = 1
+    AEXPR_OP_ALL = 2
+    AEXPR_DISTINCT = 3
+    AEXPR_NOT_DISTINCT = 4
+    AEXPR_NULLIF = 5
+    AEXPR_OF = 6
+    AEXPR_IN = 7
+    AEXPR_LIKE = 8
+    AEXPR_ILIKE = 9
+    AEXPR_SIMILAR = 10
+    AEXPR_BETWEEN = 11
+    AEXPR_NOT_BETWEEN = 12
+    AEXPR_BETWEEN_SYM = 13
+    AEXPR_NOT_BETWEEN_SYM = 14
+    AEXPR_PAREN = 15
 
 class AlterSubscriptionType(IntEnum):
     ALTER_SUBSCRIPTION_OPTIONS = 0
-    ALTER_SUBSCRIPTION_CONNECTION = auto()
-    ALTER_SUBSCRIPTION_PUBLICATION = auto()
-    ALTER_SUBSCRIPTION_REFRESH = auto()
-    ALTER_SUBSCRIPTION_ENABLED = auto()
+    ALTER_SUBSCRIPTION_CONNECTION = 1
+    ALTER_SUBSCRIPTION_PUBLICATION = 2
+    ALTER_SUBSCRIPTION_REFRESH = 3
+    ALTER_SUBSCRIPTION_ENABLED = 4
 
 class AlterTSConfigType(IntEnum):
     ALTER_TSCONFIG_ADD_MAPPING = 0
-    ALTER_TSCONFIG_ALTER_MAPPING_FOR_TOKEN = auto()
-    ALTER_TSCONFIG_REPLACE_DICT = auto()
-    ALTER_TSCONFIG_REPLACE_DICT_FOR_TOKEN = auto()
-    ALTER_TSCONFIG_DROP_MAPPING = auto()
+    ALTER_TSCONFIG_ALTER_MAPPING_FOR_TOKEN = 1
+    ALTER_TSCONFIG_REPLACE_DICT = 2
+    ALTER_TSCONFIG_REPLACE_DICT_FOR_TOKEN = 3
+    ALTER_TSCONFIG_DROP_MAPPING = 4
 
 class AlterTableType(IntEnum):
     AT_AddColumn = 0
-    AT_AddColumnRecurse = auto()
-    AT_AddColumnToView = auto()
-    AT_ColumnDefault = auto()
-    AT_DropNotNull = auto()
-    AT_SetNotNull = auto()
-    AT_SetStatistics = auto()
-    AT_SetOptions = auto()
-    AT_ResetOptions = auto()
-    AT_SetStorage = auto()
-    AT_DropColumn = auto()
-    AT_DropColumnRecurse = auto()
-    AT_AddIndex = auto()
-    AT_ReAddIndex = auto()
-    AT_AddConstraint = auto()
-    AT_AddConstraintRecurse = auto()
-    AT_ReAddConstraint = auto()
-    AT_AlterConstraint = auto()
-    AT_ValidateConstraint = auto()
-    AT_ValidateConstraintRecurse = auto()
-    AT_ProcessedConstraint = auto()
-    AT_AddIndexConstraint = auto()
-    AT_DropConstraint = auto()
-    AT_DropConstraintRecurse = auto()
-    AT_ReAddComment = auto()
-    AT_AlterColumnType = auto()
-    AT_AlterColumnGenericOptions = auto()
-    AT_ChangeOwner = auto()
-    AT_ClusterOn = auto()
-    AT_DropCluster = auto()
-    AT_SetLogged = auto()
-    AT_SetUnLogged = auto()
-    AT_AddOids = auto()
-    AT_AddOidsRecurse = auto()
-    AT_DropOids = auto()
-    AT_SetTableSpace = auto()
-    AT_SetRelOptions = auto()
-    AT_ResetRelOptions = auto()
-    AT_ReplaceRelOptions = auto()
-    AT_EnableTrig = auto()
-    AT_EnableAlwaysTrig = auto()
-    AT_EnableReplicaTrig = auto()
-    AT_DisableTrig = auto()
-    AT_EnableTrigAll = auto()
-    AT_DisableTrigAll = auto()
-    AT_EnableTrigUser = auto()
-    AT_DisableTrigUser = auto()
-    AT_EnableRule = auto()
-    AT_EnableAlwaysRule = auto()
-    AT_EnableReplicaRule = auto()
-    AT_DisableRule = auto()
-    AT_AddInherit = auto()
-    AT_DropInherit = auto()
-    AT_AddOf = auto()
-    AT_DropOf = auto()
-    AT_ReplicaIdentity = auto()
-    AT_EnableRowSecurity = auto()
-    AT_DisableRowSecurity = auto()
-    AT_ForceRowSecurity = auto()
-    AT_NoForceRowSecurity = auto()
-    AT_GenericOptions = auto()
-    AT_AttachPartition = auto()
-    AT_DetachPartition = auto()
-    AT_AddIdentity = auto()
-    AT_SetIdentity = auto()
-    AT_DropIdentity = auto()
+    AT_AddColumnRecurse = 1
+    AT_AddColumnToView = 2
+    AT_ColumnDefault = 3
+    AT_DropNotNull = 4
+    AT_SetNotNull = 5
+    AT_SetStatistics = 6
+    AT_SetOptions = 7
+    AT_ResetOptions = 8
+    AT_SetStorage = 9
+    AT_DropColumn = 10
+    AT_DropColumnRecurse = 11
+    AT_AddIndex = 12
+    AT_ReAddIndex = 13
+    AT_AddConstraint = 14
+    AT_AddConstraintRecurse = 15
+    AT_ReAddConstraint = 16
+    AT_AlterConstraint = 17
+    AT_ValidateConstraint = 18
+    AT_ValidateConstraintRecurse = 19
+    AT_ProcessedConstraint = 20
+    AT_AddIndexConstraint = 21
+    AT_DropConstraint = 22
+    AT_DropConstraintRecurse = 23
+    AT_ReAddComment = 24
+    AT_AlterColumnType = 25
+    AT_AlterColumnGenericOptions = 26
+    AT_ChangeOwner = 27
+    AT_ClusterOn = 28
+    AT_DropCluster = 29
+    AT_SetLogged = 30
+    AT_SetUnLogged = 31
+    AT_AddOids = 32
+    AT_AddOidsRecurse = 33
+    AT_DropOids = 34
+    AT_SetTableSpace = 35
+    AT_SetRelOptions = 36
+    AT_ResetRelOptions = 37
+    AT_ReplaceRelOptions = 38
+    AT_EnableTrig = 39
+    AT_EnableAlwaysTrig = 40
+    AT_EnableReplicaTrig = 41
+    AT_DisableTrig = 42
+    AT_EnableTrigAll = 43
+    AT_DisableTrigAll = 44
+    AT_EnableTrigUser = 45
+    AT_DisableTrigUser = 46
+    AT_EnableRule = 47
+    AT_EnableAlwaysRule = 48
+    AT_EnableReplicaRule = 49
+    AT_DisableRule = 50
+    AT_AddInherit = 51
+    AT_DropInherit = 52
+    AT_AddOf = 53
+    AT_DropOf = 54
+    AT_ReplicaIdentity = 55
+    AT_EnableRowSecurity = 56
+    AT_DisableRowSecurity = 57
+    AT_ForceRowSecurity = 58
+    AT_NoForceRowSecurity = 59
+    AT_GenericOptions = 60
+    AT_AttachPartition = 61
+    AT_DetachPartition = 62
+    AT_AddIdentity = 63
+    AT_SetIdentity = 64
+    AT_DropIdentity = 65
 
 class ConstrType(IntEnum):
     CONSTR_NULL = 0
-    CONSTR_NOTNULL = auto()
-    CONSTR_DEFAULT = auto()
-    CONSTR_IDENTITY = auto()
-    CONSTR_CHECK = auto()
-    CONSTR_PRIMARY = auto()
-    CONSTR_UNIQUE = auto()
-    CONSTR_EXCLUSION = auto()
-    CONSTR_FOREIGN = auto()
-    CONSTR_ATTR_DEFERRABLE = auto()
-    CONSTR_ATTR_NOT_DEFERRABLE = auto()
-    CONSTR_ATTR_DEFERRED = auto()
-    CONSTR_ATTR_IMMEDIATE = auto()
+    CONSTR_NOTNULL = 1
+    CONSTR_DEFAULT = 2
+    CONSTR_IDENTITY = 3
+    CONSTR_CHECK = 4
+    CONSTR_PRIMARY = 5
+    CONSTR_UNIQUE = 6
+    CONSTR_EXCLUSION = 7
+    CONSTR_FOREIGN = 8
+    CONSTR_ATTR_DEFERRABLE = 9
+    CONSTR_ATTR_NOT_DEFERRABLE = 10
+    CONSTR_ATTR_DEFERRED = 11
+    CONSTR_ATTR_IMMEDIATE = 12
 
 class DefElemAction(IntEnum):
     DEFELEM_UNSPEC = 0
-    DEFELEM_SET = auto()
-    DEFELEM_ADD = auto()
-    DEFELEM_DROP = auto()
+    DEFELEM_SET = 1
+    DEFELEM_ADD = 2
+    DEFELEM_DROP = 3
 
 class DiscardMode(IntEnum):
     DISCARD_ALL = 0
-    DISCARD_PLANS = auto()
-    DISCARD_SEQUENCES = auto()
-    DISCARD_TEMP = auto()
+    DISCARD_PLANS = 1
+    DISCARD_SEQUENCES = 2
+    DISCARD_TEMP = 3
 
 class DropBehavior(IntEnum):
     DROP_RESTRICT = 0
-    DROP_CASCADE = auto()
+    DROP_CASCADE = 1
 
 class FetchDirection(IntEnum):
     FETCH_FORWARD = 0
-    FETCH_BACKWARD = auto()
-    FETCH_ABSOLUTE = auto()
-    FETCH_RELATIVE = auto()
+    FETCH_BACKWARD = 1
+    FETCH_ABSOLUTE = 2
+    FETCH_RELATIVE = 3
 
 class FunctionParameterMode(str, Enum):
     FUNC_PARAM_IN = 'i'
@@ -158,90 +155,90 @@ class FunctionParameterMode(str, Enum):
 
 class GrantObjectType(IntEnum):
     ACL_OBJECT_COLUMN = 0
-    ACL_OBJECT_RELATION = auto()
-    ACL_OBJECT_SEQUENCE = auto()
-    ACL_OBJECT_DATABASE = auto()
-    ACL_OBJECT_DOMAIN = auto()
-    ACL_OBJECT_FDW = auto()
-    ACL_OBJECT_FOREIGN_SERVER = auto()
-    ACL_OBJECT_FUNCTION = auto()
-    ACL_OBJECT_LANGUAGE = auto()
-    ACL_OBJECT_LARGEOBJECT = auto()
-    ACL_OBJECT_NAMESPACE = auto()
-    ACL_OBJECT_TABLESPACE = auto()
-    ACL_OBJECT_TYPE = auto()
+    ACL_OBJECT_RELATION = 1
+    ACL_OBJECT_SEQUENCE = 2
+    ACL_OBJECT_DATABASE = 3
+    ACL_OBJECT_DOMAIN = 4
+    ACL_OBJECT_FDW = 5
+    ACL_OBJECT_FOREIGN_SERVER = 6
+    ACL_OBJECT_FUNCTION = 7
+    ACL_OBJECT_LANGUAGE = 8
+    ACL_OBJECT_LARGEOBJECT = 9
+    ACL_OBJECT_NAMESPACE = 10
+    ACL_OBJECT_TABLESPACE = 11
+    ACL_OBJECT_TYPE = 12
 
 class GrantTargetType(IntEnum):
     ACL_TARGET_OBJECT = 0
-    ACL_TARGET_ALL_IN_SCHEMA = auto()
-    ACL_TARGET_DEFAULTS = auto()
+    ACL_TARGET_ALL_IN_SCHEMA = 1
+    ACL_TARGET_DEFAULTS = 2
 
 class GroupingSetKind(IntEnum):
     GROUPING_SET_EMPTY = 0
-    GROUPING_SET_SIMPLE = auto()
-    GROUPING_SET_ROLLUP = auto()
-    GROUPING_SET_CUBE = auto()
-    GROUPING_SET_SETS = auto()
+    GROUPING_SET_SIMPLE = 1
+    GROUPING_SET_ROLLUP = 2
+    GROUPING_SET_CUBE = 3
+    GROUPING_SET_SETS = 4
 
 class ImportForeignSchemaType(IntEnum):
     FDW_IMPORT_SCHEMA_ALL = 0
-    FDW_IMPORT_SCHEMA_LIMIT_TO = auto()
-    FDW_IMPORT_SCHEMA_EXCEPT = auto()
+    FDW_IMPORT_SCHEMA_LIMIT_TO = 1
+    FDW_IMPORT_SCHEMA_EXCEPT = 2
 
 class ObjectType(IntEnum):
     OBJECT_ACCESS_METHOD = 0
-    OBJECT_AGGREGATE = auto()
-    OBJECT_AMOP = auto()
-    OBJECT_AMPROC = auto()
-    OBJECT_ATTRIBUTE = auto()
-    OBJECT_CAST = auto()
-    OBJECT_COLUMN = auto()
-    OBJECT_COLLATION = auto()
-    OBJECT_CONVERSION = auto()
-    OBJECT_DATABASE = auto()
-    OBJECT_DEFAULT = auto()
-    OBJECT_DEFACL = auto()
-    OBJECT_DOMAIN = auto()
-    OBJECT_DOMCONSTRAINT = auto()
-    OBJECT_EVENT_TRIGGER = auto()
-    OBJECT_EXTENSION = auto()
-    OBJECT_FDW = auto()
-    OBJECT_FOREIGN_SERVER = auto()
-    OBJECT_FOREIGN_TABLE = auto()
-    OBJECT_FUNCTION = auto()
-    OBJECT_INDEX = auto()
-    OBJECT_LANGUAGE = auto()
-    OBJECT_LARGEOBJECT = auto()
-    OBJECT_MATVIEW = auto()
-    OBJECT_OPCLASS = auto()
-    OBJECT_OPERATOR = auto()
-    OBJECT_OPFAMILY = auto()
-    OBJECT_POLICY = auto()
-    OBJECT_PUBLICATION = auto()
-    OBJECT_PUBLICATION_REL = auto()
-    OBJECT_ROLE = auto()
-    OBJECT_RULE = auto()
-    OBJECT_SCHEMA = auto()
-    OBJECT_SEQUENCE = auto()
-    OBJECT_SUBSCRIPTION = auto()
-    OBJECT_STATISTIC_EXT = auto()
-    OBJECT_TABCONSTRAINT = auto()
-    OBJECT_TABLE = auto()
-    OBJECT_TABLESPACE = auto()
-    OBJECT_TRANSFORM = auto()
-    OBJECT_TRIGGER = auto()
-    OBJECT_TSCONFIGURATION = auto()
-    OBJECT_TSDICTIONARY = auto()
-    OBJECT_TSPARSER = auto()
-    OBJECT_TSTEMPLATE = auto()
-    OBJECT_TYPE = auto()
-    OBJECT_USER_MAPPING = auto()
-    OBJECT_VIEW = auto()
+    OBJECT_AGGREGATE = 1
+    OBJECT_AMOP = 2
+    OBJECT_AMPROC = 3
+    OBJECT_ATTRIBUTE = 4
+    OBJECT_CAST = 5
+    OBJECT_COLUMN = 6
+    OBJECT_COLLATION = 7
+    OBJECT_CONVERSION = 8
+    OBJECT_DATABASE = 9
+    OBJECT_DEFAULT = 10
+    OBJECT_DEFACL = 11
+    OBJECT_DOMAIN = 12
+    OBJECT_DOMCONSTRAINT = 13
+    OBJECT_EVENT_TRIGGER = 14
+    OBJECT_EXTENSION = 15
+    OBJECT_FDW = 16
+    OBJECT_FOREIGN_SERVER = 17
+    OBJECT_FOREIGN_TABLE = 18
+    OBJECT_FUNCTION = 19
+    OBJECT_INDEX = 20
+    OBJECT_LANGUAGE = 21
+    OBJECT_LARGEOBJECT = 22
+    OBJECT_MATVIEW = 23
+    OBJECT_OPCLASS = 24
+    OBJECT_OPERATOR = 25
+    OBJECT_OPFAMILY = 26
+    OBJECT_POLICY = 27
+    OBJECT_PUBLICATION = 28
+    OBJECT_PUBLICATION_REL = 29
+    OBJECT_ROLE = 30
+    OBJECT_RULE = 31
+    OBJECT_SCHEMA = 32
+    OBJECT_SEQUENCE = 33
+    OBJECT_SUBSCRIPTION = 34
+    OBJECT_STATISTIC_EXT = 35
+    OBJECT_TABCONSTRAINT = 36
+    OBJECT_TABLE = 37
+    OBJECT_TABLESPACE = 38
+    OBJECT_TRANSFORM = 39
+    OBJECT_TRIGGER = 40
+    OBJECT_TSCONFIGURATION = 41
+    OBJECT_TSDICTIONARY = 42
+    OBJECT_TSPARSER = 43
+    OBJECT_TSTEMPLATE = 44
+    OBJECT_TYPE = 45
+    OBJECT_USER_MAPPING = 46
+    OBJECT_VIEW = 47
 
 class OverridingKind(IntEnum):
     OVERRIDING_NOT_SET = 0
-    OVERRIDING_USER_VALUE = auto()
-    OVERRIDING_SYSTEM_VALUE = auto()
+    OVERRIDING_USER_VALUE = 1
+    OVERRIDING_SYSTEM_VALUE = 2
 
 class PartitionRangeDatumKind(IntEnum):
     PARTITION_RANGE_DATUM_MINVALUE = -1
@@ -250,57 +247,57 @@ class PartitionRangeDatumKind(IntEnum):
 
 class QuerySource(IntEnum):
     QSRC_ORIGINAL = 0
-    QSRC_PARSER = auto()
-    QSRC_INSTEAD_RULE = auto()
-    QSRC_QUAL_INSTEAD_RULE = auto()
-    QSRC_NON_INSTEAD_RULE = auto()
+    QSRC_PARSER = 1
+    QSRC_INSTEAD_RULE = 2
+    QSRC_QUAL_INSTEAD_RULE = 3
+    QSRC_NON_INSTEAD_RULE = 4
 
 class RTEKind(IntEnum):
     RTE_RELATION = 0
-    RTE_SUBQUERY = auto()
-    RTE_JOIN = auto()
-    RTE_FUNCTION = auto()
-    RTE_TABLEFUNC = auto()
-    RTE_VALUES = auto()
-    RTE_CTE = auto()
-    RTE_NAMEDTUPLESTORE = auto()
+    RTE_SUBQUERY = 1
+    RTE_JOIN = 2
+    RTE_FUNCTION = 3
+    RTE_TABLEFUNC = 4
+    RTE_VALUES = 5
+    RTE_CTE = 6
+    RTE_NAMEDTUPLESTORE = 7
 
 class ReindexObjectType(IntEnum):
     REINDEX_OBJECT_INDEX = 0
-    REINDEX_OBJECT_TABLE = auto()
-    REINDEX_OBJECT_SCHEMA = auto()
-    REINDEX_OBJECT_SYSTEM = auto()
-    REINDEX_OBJECT_DATABASE = auto()
+    REINDEX_OBJECT_TABLE = 1
+    REINDEX_OBJECT_SCHEMA = 2
+    REINDEX_OBJECT_SYSTEM = 3
+    REINDEX_OBJECT_DATABASE = 4
 
 class RoleSpecType(IntEnum):
     ROLESPEC_CSTRING = 0
-    ROLESPEC_CURRENT_USER = auto()
-    ROLESPEC_SESSION_USER = auto()
-    ROLESPEC_PUBLIC = auto()
+    ROLESPEC_CURRENT_USER = 1
+    ROLESPEC_SESSION_USER = 2
+    ROLESPEC_PUBLIC = 3
 
 class RoleStmtType(IntEnum):
     ROLESTMT_ROLE = 0
-    ROLESTMT_USER = auto()
-    ROLESTMT_GROUP = auto()
+    ROLESTMT_USER = 1
+    ROLESTMT_GROUP = 2
 
 class SetOperation(IntEnum):
     SETOP_NONE = 0
-    SETOP_UNION = auto()
-    SETOP_INTERSECT = auto()
-    SETOP_EXCEPT = auto()
+    SETOP_UNION = 1
+    SETOP_INTERSECT = 2
+    SETOP_EXCEPT = 3
 
 class SortByDir(IntEnum):
     SORTBY_DEFAULT = 0
-    SORTBY_ASC = auto()
-    SORTBY_DESC = auto()
-    SORTBY_USING = auto()
+    SORTBY_ASC = 1
+    SORTBY_DESC = 2
+    SORTBY_USING = 3
 
 class SortByNulls(IntEnum):
     SORTBY_NULLS_DEFAULT = 0
-    SORTBY_NULLS_FIRST = auto()
-    SORTBY_NULLS_LAST = auto()
+    SORTBY_NULLS_FIRST = 1
+    SORTBY_NULLS_LAST = 2
 
-class TableLikeOption(IntFlag):
+class TableLikeOption(IntEnum):
     CREATE_TABLE_LIKE_DEFAULTS = 1 << 0
     CREATE_TABLE_LIKE_CONSTRAINTS = 1 << 1
     CREATE_TABLE_LIKE_IDENTITY = 1 << 2
@@ -311,17 +308,17 @@ class TableLikeOption(IntFlag):
 
 class TransactionStmtKind(IntEnum):
     TRANS_STMT_BEGIN = 0
-    TRANS_STMT_START = auto()
-    TRANS_STMT_COMMIT = auto()
-    TRANS_STMT_ROLLBACK = auto()
-    TRANS_STMT_SAVEPOINT = auto()
-    TRANS_STMT_RELEASE = auto()
-    TRANS_STMT_ROLLBACK_TO = auto()
-    TRANS_STMT_PREPARE = auto()
-    TRANS_STMT_COMMIT_PREPARED = auto()
-    TRANS_STMT_ROLLBACK_PREPARED = auto()
+    TRANS_STMT_START = 1
+    TRANS_STMT_COMMIT = 2
+    TRANS_STMT_ROLLBACK = 3
+    TRANS_STMT_SAVEPOINT = 4
+    TRANS_STMT_RELEASE = 5
+    TRANS_STMT_ROLLBACK_TO = 6
+    TRANS_STMT_PREPARE = 7
+    TRANS_STMT_COMMIT_PREPARED = 8
+    TRANS_STMT_ROLLBACK_PREPARED = 9
 
-class VacuumOption(IntFlag):
+class VacuumOption(IntEnum):
     VACOPT_VACUUM = 1 << 0
     VACOPT_ANALYZE = 1 << 1
     VACOPT_VERBOSE = 1 << 2
@@ -333,22 +330,22 @@ class VacuumOption(IntFlag):
 
 class VariableSetKind(IntEnum):
     VAR_SET_VALUE = 0
-    VAR_SET_DEFAULT = auto()
-    VAR_SET_CURRENT = auto()
-    VAR_SET_MULTI = auto()
-    VAR_RESET = auto()
-    VAR_RESET_ALL = auto()
+    VAR_SET_DEFAULT = 1
+    VAR_SET_CURRENT = 2
+    VAR_SET_MULTI = 3
+    VAR_RESET = 4
+    VAR_RESET_ALL = 5
 
 class ViewCheckOption(IntEnum):
     NO_CHECK_OPTION = 0
-    LOCAL_CHECK_OPTION = auto()
-    CASCADED_CHECK_OPTION = auto()
+    LOCAL_CHECK_OPTION = 1
+    CASCADED_CHECK_OPTION = 2
 
 class WCOKind(IntEnum):
     WCO_VIEW_CHECK = 0
-    WCO_RLS_INSERT_CHECK = auto()
-    WCO_RLS_UPDATE_CHECK = auto()
-    WCO_RLS_CONFLICT_CHECK = auto()
+    WCO_RLS_INSERT_CHECK = 1
+    WCO_RLS_UPDATE_CHECK = 2
+    WCO_RLS_CONFLICT_CHECK = 3
 
 
 # #define-ed constants
