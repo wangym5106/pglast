@@ -5,6 +5,8 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017, 2018, 2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
 from . import enums
 from .error import Error
@@ -118,7 +120,7 @@ def _remove_stmt_len_and_location(parse_tree):
                 _remove_stmt_len_and_location(v)
     else:
         parse_tree.pop('location', None)
-        for k, v in parse_tree.items():
+        for k, v in parse_tree.viewitems():
             if k == 'RawStmt':
                 v.pop('stmt_len', None)
                 v.pop('stmt_location', None)

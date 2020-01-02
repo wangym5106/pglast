@@ -5,6 +5,9 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017, 2018, 2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
+
 
 from contextlib import contextmanager
 from io import StringIO
@@ -46,7 +49,7 @@ def get_printer_for_node_tag(parent_node_tag, node_tag):
                                       % node_tag)
 
 
-def node_printer(*node_tags, override=False):
+def node_printer(*node_tags, **kwargs):
     r"""Decorator to register a specific printer implementation for given `node_tag`.
 
     :param \*node_tags: one or two node tags
@@ -60,6 +63,7 @@ def node_printer(*node_tags, override=False):
     and the function will be registered under the key ``(parent_tag, tag)``.
     """
 
+    override = kwargs.get('override', False)
     def decorator(impl):
         if len(node_tags) == 1:
             parent_tags = (None,)

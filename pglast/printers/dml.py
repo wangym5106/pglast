@@ -5,6 +5,8 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017, 2018, 2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
 from .. import enums
 from ..node import Missing, List

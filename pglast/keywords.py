@@ -4,6 +4,8 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
 COL_NAME_KEYWORDS = {'between', 'bigint', 'bit', 'boolean', 'char', 'character', 'coalesce',
                      'dec', 'decimal', 'exists', 'extract', 'float', 'greatest', 'grouping',

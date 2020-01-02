@@ -5,8 +5,10 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
-from pathlib import Path
+from pathlib2 import Path
 
 import pytest
 

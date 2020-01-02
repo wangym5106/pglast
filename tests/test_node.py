@@ -5,6 +5,8 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017, 2018 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
 import enum
 
@@ -14,7 +16,7 @@ from pglast import Missing, Node
 from pglast.node import Base, List, Scalar
 
 
-class DummyEnum(str, enum.Enum):
+class DummyEnum(unicode, enum.Enum):
     A = 'a'
     B = 'b'
 
@@ -73,7 +75,7 @@ def test_basic():
     assert bar1.attribute_names == {'a', 'b', 'c', 'd'}
     assert foo1[bar1.parent_attribute] == bar1
     assert repr(bar1.a) == '<1>'
-    assert repr(bar1.b) == "<'b'>"
+    assert repr(bar1.b) == "<u'b'>"
     assert repr(bar1.c) == '<None>'
     assert bar1.a & 1
     with pytest.raises(ValueError):
@@ -84,7 +86,7 @@ def test_basic():
     # __str__
     assert str(bar1) == 'bar={Bar}'
     assert str(bar1.a) == 'a=<1>'
-    assert str(bar1.b) == "b=<'b'>"
+    assert str(bar1.b) == "b=<u'b'>"
 
     # Scalar.__bool__
     assert bar1.a

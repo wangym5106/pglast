@@ -5,11 +5,16 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017, 2018, 2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
 from enum import Enum
 
 
-class Missing:
+class Missing(object):
+    def __nonzero__(self):
+        return False
+
     def __bool__(self):
         return False
 
@@ -30,7 +35,7 @@ Missing = Missing()
 "Singleton returned when trying to get a non-existing attribute out of a :class:`Node`."
 
 
-class Base:
+class Base(object):
     """Common base class.
 
     :type details: dict
@@ -80,6 +85,9 @@ class Base:
         if isinstance(aname, tuple):
             aname = '%s[%d]' % aname
         return '%s=%r' % (aname, self)
+
+    def __bool__(self):
+        return True
 
     @property
     def parent_node(self):
@@ -150,7 +158,8 @@ class List(Base):
         "A generator that recursively traverse all the items in the list."
 
         for item in self:
-            yield from item.traverse()
+            for subitem in item.traverse():
+                yield subitem
 
 
 class Node(Base):
@@ -175,12 +184,13 @@ class Node(Base):
             raise ValueError("Unexpected value for 'details', must be a dict with"
                              " exactly one key, got %r" % type(details))
         super()._init(parent, name)
-        (self._node_tag, self._parse_tree), *_ = details.items()
+        self._node_tag, self._parse_tree = next(details.iteritems())
 
     def __repr__(self):
         return '{%s}' % self._node_tag
 
     def __getattr__(self, attr):
+        attr = str(attr)
         try:
             value = self._parse_tree[attr]
         except KeyError:
@@ -200,7 +210,7 @@ class Node(Base):
 
     def __iter__(self):
         value = self._parse_tree
-        for attr in sorted(value.keys()):
+        for attr in sorted(value.viewkeys()):
             yield Base(value[attr], self, attr)
 
     @property
@@ -208,7 +218,7 @@ class Node(Base):
         "The names of the attributes present in the parse tree of the node."
 
         value = self._parse_tree
-        return value.keys()
+        return value.viewkeys()
 
     @property
     def node_tag(self):
@@ -233,7 +243,8 @@ class Node(Base):
 
         yield self
         for item in self:
-            yield from item.traverse()
+            for subitem in item.traverse():
+                yield subitem
 
 
 class Scalar(Base):

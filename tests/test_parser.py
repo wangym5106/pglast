@@ -5,6 +5,8 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017, 2018, 2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
 import pytest
 
@@ -23,7 +25,7 @@ def test_basic():
     assert len(ptree) == 1
     rawstmt = ptree[0]
     assert isinstance(rawstmt, dict)
-    assert rawstmt.keys() == {'RawStmt'}
+    assert rawstmt.viewkeys() == {'RawStmt'}
 
     ptree = parse_plpgsql('CREATE FUNCTION add (a integer, b integer)'
                           ' RETURNS integer AS $$ BEGIN RETURN a + b; END; $$'
@@ -31,7 +33,7 @@ def test_basic():
     assert len(ptree) == 1
     function = ptree[0]
     assert isinstance(function, dict)
-    assert function.keys() == {'PLpgSQL_function'}
+    assert function.viewkeys() == {'PLpgSQL_function'}
 
 
 def test_errors():

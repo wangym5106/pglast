@@ -5,8 +5,9 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017, 2018, 2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function
 
-from pathlib import Path
+from pathlib2 import Path
 import subprocess
 
 from setuptools import Extension, setup, find_packages
@@ -35,7 +36,7 @@ LIBPG_QUERY_DIR = str(here / 'libpg_query')
 class BuildLibPgQueryFirst(build_ext):
     def run(self):
         subprocess.check_call(['make', '-s', '-C', LIBPG_QUERY_DIR, 'build'])
-        super().run()
+        build_ext.run(self)
 
 
 setup(
@@ -81,8 +82,10 @@ setup(
     ]),
 
     install_requires=[
-        'aenum; python_version < "3.6"',
+        'enum34',
         'setuptools',
+        'future',
+        'pathlib2'
     ],
     extras_require={
         'dev': [

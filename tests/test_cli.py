@@ -5,13 +5,22 @@
 # :License:   GNU General Public License version 3 or later
 # :Copyright: © 2017, 2018, 2019 Lele Gaifax
 #
+from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
 
 try:
     from contextlib import _RedirectStream, redirect_stdout
 except ImportError:
     # Python 3.4
-    from contextlib import redirect_stdout
+    import contextlib
     import sys
+
+    @contextlib.contextmanager
+    def redirect_stdout(target):
+        original_stdout = sys.stdout
+        sys.stdout = target
+        yield
+        sys.stdout = original_stdout
 
     class redirect_stdin:
         def __init__(self, new_target):
