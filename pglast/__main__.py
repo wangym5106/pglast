@@ -26,7 +26,7 @@ def workhorse(args):
             _remove_stmt_len_and_location(tree)
         output = args.outfile or sys.stdout
         with output:
-            json.dump(tree, output, sort_keys=True, indent=2)
+            output.write(unicode(json.dumps(tree, sort_keys=True, indent=2)))
             output.write('\n')
     else:
         try:
@@ -38,7 +38,7 @@ def workhorse(args):
                 comma_at_eoln=args.comma_at_eoln,
                 semicolon_after_last_statement=args.semicolon_after_last_statement)
         except Error as e:
-            print()
+            # print()
             raise SystemExit(e)
 
         output = args.outfile or sys.stdout
