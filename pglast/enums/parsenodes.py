@@ -6,6 +6,8 @@
 #
 
 from __future__ import absolute_import, division, print_function, unicode_literals
+from builtins import *
+
 from enum import IntEnum, Enum
 
 
@@ -146,7 +148,7 @@ class FetchDirection(IntEnum):
     FETCH_ABSOLUTE = 2
     FETCH_RELATIVE = 3
 
-class FunctionParameterMode(str, Enum):
+class FunctionParameterMode(unicode, Enum):
     FUNC_PARAM_IN = 'i'
     FUNC_PARAM_OUT = 'o'
     FUNC_PARAM_INOUT = 'b'

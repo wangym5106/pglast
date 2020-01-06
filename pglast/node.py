@@ -13,7 +13,7 @@ from enum import Enum
 
 class Missing(object):
     def __nonzero__(self):
-        return False
+        return self.__bool__()
 
     def __bool__(self):
         return False
@@ -80,6 +80,9 @@ class Base(object):
             return all(getattr(self, slot) == getattr(other, slot) for slot in self.__slots__)
         return False
 
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def __str__(self):
         aname = self._parent_attribute
         if isinstance(aname, tuple):
@@ -88,6 +91,9 @@ class Base(object):
 
     def __bool__(self):
         return True
+
+    def __nonzero__(self):
+        return self.__bool__()
 
     @property
     def parent_node(self):
@@ -275,6 +281,9 @@ class Scalar(Base):
             return self.value
         return True
 
+    def __nonzero__(self):
+        return self.__bool__()
+
     def __eq__(self, other):
         if isinstance(other, Enum):
             # Handle the FunctionParameterMode case, when the value is an integer while the
@@ -287,6 +296,9 @@ class Scalar(Base):
             return self.value == other
         else:
             return super().__eq__(other)
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def __repr__(self):
         return '<%r>' % self._value
