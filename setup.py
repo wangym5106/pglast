@@ -6,8 +6,8 @@
 # :Copyright: © 2017, 2018, 2019 Lele Gaifax
 #
 from __future__ import absolute_import, division, print_function
-
-from pathlib2 import Path
+import os
+import io
 import subprocess
 
 from setuptools import Extension, setup, find_packages
@@ -21,16 +21,16 @@ else:
     extension_source = 'pglast/parser.pyx'
 
 
-here = Path(__file__).absolute().parent
-with (here / 'README.rst').open(encoding='utf-8') as f:
+here = os.path.dirname(__file__)
+with io.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
     README = f.read()
-with (here / 'CHANGES.rst').open(encoding='utf-8') as f:
+with io.open(os.path.join(here, 'CHANGES.rst'), encoding='utf-8') as f:
     CHANGES = f.read()
-with (here / 'version.txt').open(encoding='utf-8') as f:
+with io.open(os.path.join(here, 'version.txt'), encoding='utf-8') as f:
     VERSION = f.read().strip()
 
 
-LIBPG_QUERY_DIR = str(here / 'libpg_query')
+LIBPG_QUERY_DIR = os.path.join(here, 'libpg_query')
 
 
 class BuildLibPgQueryFirst(build_ext):
